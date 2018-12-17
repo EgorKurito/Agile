@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todolist.apps.TodolistConfig',
     'task_planner.apps.TaskPlannerConfig',
+    'pages',
 ]
 
 MIDDLEWARE = [
