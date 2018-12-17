@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import TodoList, Category
-import datetime
-
-
+from datetime import datetime
 
 
 def index(request):
@@ -14,7 +12,8 @@ def index(request):
             date = str(request.POST["date"])
             category = request.POST["category_select"]
             content = title + " -- " + date + " " + category
-            Todo = TodoList(title=title, content=content, due_date=date, category=Category.objects.get(name=category))
+            datetime_object = datetime.strptime(date, "%Y-%m-%d")
+            Todo = TodoList(title=title, content=content, due_date=datetime_object, category=Category.objects.get(name=category))
             Todo.save()
             return redirect("/")
 
@@ -24,5 +23,5 @@ def index(request):
                 todo = TodoList.objects.get(id=int(todo_id))
                 todo.delete()
 
-    return render(request, "index.html", {"todos": todos, "categories": categories})
+    return render(request, "todolist/index.html", {"todos": todos, "categories": categories})
 
