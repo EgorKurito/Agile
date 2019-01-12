@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include('todolist.urls')),
     path('pages/', include('pages.urls')),
+    path('message/', include('posts.urls')),
 ]

@@ -23,5 +23,5 @@ def index(request):
                 todo = TodoList.objects.get(id=int(todo_id))
                 todo.delete()
 
-    return render(request, "../Agile/templates/todolist/index.html", {"todos": todos, "categories": categories})
+    return render(request, "todolist/index.html", {"todos": todos, "categories": categories})
 
